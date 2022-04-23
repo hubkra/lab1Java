@@ -1,13 +1,14 @@
 package com.example.demo;
 
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Map;
 
 public class UsersController {
 
-    private  HashMap<Integer, UserEntity> hmap = new HashMap<Integer, UserEntity>();
+    private static HashMap<Integer, UserEntity> hmap = new HashMap<Integer, UserEntity>();
     {
         UserEntity person1 = new UserEntity("Kamil", "Pietrzak", 15);
         UserEntity person2 = new UserEntity("Hubert", "Kras", 22);
@@ -20,12 +21,10 @@ public class UsersController {
         hmap.put(4, person4);
     }
 
-    public view()
-    {
-        for( Map.Entry pairEntry: hmap.entrySet())
-        {
-            System.out.println(pairEntry.getKey()+" : "+pairEntry.getValue() );
-        }
+    public static String view() throws JsonProcessingException {
+        String json = new ObjectMapper().writeValueAsString(hmap);
+        System.out.println(json);
+        return json;
     }
 
 
