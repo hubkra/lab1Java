@@ -16,6 +16,5 @@ public class HomeController {
     @RequestMapping("/example")
     public String web() {
         return "index";
-
     }
 }
